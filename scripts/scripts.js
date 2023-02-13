@@ -54,10 +54,11 @@ function loadtitlecard() {
 
 function load() {
     for (var card in mycards) {
+        var cardText = [];
+
         var obj = mycards[card];
         for (var text in obj) {
-            var cardText = [];
-            console.log(text);
+            console.log(obj);
             cardText += `
             <${obj[text].tag} class="${obj[text].classes}">${obj[text].txt}</${obj[text].tag}>`;
         }
