@@ -9,17 +9,18 @@ var titlecard = [
 var mycards = [
     {
         txt: {
+            tag: ``,
             txt: ``,
-            classes: ''
-        }
-
+            classes: ``,
+        },
     },
     {
         txt: {
+            tag: ``,
             txt: ``,
-            classes: ''
-        }
-    }
+            classes: ``,
+        },
+    },
 ];
 
 
@@ -52,16 +53,19 @@ function loadtitlecard() {
 
 
 function load() {
-    for (var card of mycards) {
-        document.getElementById('main').innerHTML += `
+    for (var card in mycards) {
+        var obj = mycards[card];
+        for (var text in obj) {
+            var cardText = [];
+            console.log(text);
+            cardText += `
+            <${obj[text].tag} class="${obj[text].classes}">${obj[text].txt}</${obj[text].tag}>`;
+        }
+        document.getElementById("main").innerHTML += `
         <div class="bg-text" data-aos="flip-down" data-aos-duration="1000">
-        <p class="lead ${card.txt.classes}">
-          ${card.txt.txt}
-        </p>
-      </div>
-    `
+        ${cardText}
+        </div>`;
     }
 
-
-    document.getElementById('main').innerHTML += `<div>Built by ProtonZ With &hearts;</div>`
+    document.getElementById("main").innerHTML += `<div>Built by ProtonZ With &hearts;</div>`;
 }
